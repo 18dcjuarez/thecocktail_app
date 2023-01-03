@@ -1,6 +1,14 @@
-import 'package:thecocktaildb_app/app/app.dart';
-import 'package:thecocktaildb_app/bootstrap.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:provider/provider.dart';
+import 'package:thecocktaildb_app/src/pages/app/app.dart';
 
-void main() {
-  bootstrap(() => const App());
+Future<void> main() async {
+  await dotenv.load(fileName: 'env');
+  runApp(
+    MultiProvider(
+      providers: const [],
+      child: const App(),
+    ),
+  );
 }
