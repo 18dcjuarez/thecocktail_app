@@ -152,9 +152,8 @@ class SimpleService {
       }
 
       return ResponseModel(
-        message: res.statusMessage!,
-        statusCode: res.statusCode!,
-        success: res.statusCode! >= 200 && res.statusCode! <= 299,
+        message: res.statusMessage ?? '',
+        statusCode: res.statusCode ?? 200,
         data: res.data is String &&
                 res.data.toString().contains('{') &&
                 res.data.toString().contains('}')
@@ -165,7 +164,7 @@ class SimpleService {
       return ResponseModel(
         data: null,
         success: false,
-        statusCode: exception.response!.statusCode!,
+        statusCode: 404,
         message:
             exception.response!.data != null && exception.response!.data is Map
                 ? '${exception.response!.data['message']}'
